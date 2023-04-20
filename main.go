@@ -5,6 +5,7 @@ import (
 
 	"net/http"
 
+	"gin_api/controller"
 	"gin_api/model"
 	"gin_api/service"
 
@@ -17,6 +18,10 @@ func main() {
 	router.GET("/album/:id", getAlbumById)
 
 	router.POST("/albums", postAlbums)
+
+	router.GET("/game", controller.InitGame)
+	router.GET("/game/learn/:skill_id", controller.LearnSkill)
+	router.GET("/game/hero", controller.GetHero)
 
 	router.Run("localhost:8080")
 }
