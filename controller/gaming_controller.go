@@ -11,9 +11,9 @@ import (
 func InitGame(c *gin.Context) {
 	fmt.Print("## Game Start!!")
 
-	hero := service.CreateNewHero()
+	response := service.StartGame()
 
-	c.IndentedJSON(http.StatusOK, hero)
+	c.IndentedJSON(http.StatusOK, response)
 }
 
 func GetHero(c *gin.Context) {

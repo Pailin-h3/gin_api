@@ -10,6 +10,8 @@ var hero database.Hero
 func CreateNewHero() database.Hero {
 	hero = database.Hero{
 		ID:               "000",
+		Level:            1,
+		SkillPoint:       0,
 		HelthPoint:       200.00,
 		FocusPoint:       100,
 		BaseAttackDamage: 5.00,
@@ -31,8 +33,12 @@ func LearnSkill(skill_id string) error {
 	}
 	for i, skill := range database.Hero_skills {
 		if skill.ID == skill_id {
-			hero.Skills = append(hero.Skills, database.Hero_skills[i])
-			return nil
+			if hero.SkillPoint >= skill.SkillPoint {
+				hero.Skills = append(hero.Skills, database.Hero_skills[i])
+				hero.SkillPoint -= skill.SkillPoint
+				return nil
+			}
+			return errors.New("INSUFFICIENT SKILL POINT")
 		}
 	}
 
