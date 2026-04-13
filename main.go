@@ -24,7 +24,7 @@ func main() {
 	router.GET("/game/learn/:skill_id", controller.LearnSkill)
 	router.GET("/game/hero", controller.GetHero)
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 }
 
 func getAlbums(c *gin.Context) {
