@@ -14,6 +14,7 @@ import (
 
 func main() {
 	router := gin.Default()
+	router.SetTrustedProxies(nil)
 	router.GET("/albums", getAlbums)
 	router.GET("/album/:id", getAlbumById)
 
